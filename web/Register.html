@@ -22,7 +22,7 @@
                 $.ajax({
                     url: "Uname",
                     type: "post",
-                    async: false,
+                    async: true,
                     data: {uname: iu.val()},
                     success: function (data) {
                         if (data == "false") {

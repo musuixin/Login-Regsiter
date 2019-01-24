@@ -14,11 +14,11 @@ import java.sql.Statement;
 
 //  工具类的创建  一般 就是为了完成默写需求 所以  一般工具类 使用的时候越简单越好  建议使用静态的
 //  类的创建 要明确 当前类的描述（功能）  尽量  功能合理    这就是类的封装的原则
-public class conUtil {
+public class ConUtil {
     private static String  myDriverUrl = "com.mysql.cj.jdbc.Driver";
     private static String murl = "jdbc:mysql://localhost/demo?useSSL=FALSE&serverTimezone=UTC";
     private static String mName = "root";
-    private static String mPwd = "950405";
+    private static String mPwd = "A0879c89eafe";
 
     public static Connection openConection(){
         Connection	 connection = null;

@@ -1,7 +1,8 @@
 package mysql;
 
-import Util.conUtil;
+
 import Util.CheckStrUtil;
+import Util.ConUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ public class Check {
 
     public static boolean login(String name,String pwd){
          int[] ints=new int[10];
-         Connection conn = conUtil.openConection();
+        Connection conn = ConUtil.openConection();
         boolean yz=false;
         name= CheckStrUtil.getStringNoBlank(name);
         pwd= CheckStrUtil.getStringNoBlank(pwd);
@@ -31,14 +32,14 @@ public class Check {
                 System.out.println(rs.getString(2));
                 yz=true;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        conUtil.myclose(conn);
+        ConUtil.myclose(conn);
         return yz;
     }
     public static boolean register(String uname,String upwd,String email){
-        Connection conn = conUtil.openConection();
+        Connection conn = ConUtil.openConection();
         uname=CheckStrUtil.getStringNoBlank(uname);
         upwd=CheckStrUtil.getStringNoBlank(upwd);
         email=CheckStrUtil.getStringNoBlank(email);
@@ -53,12 +54,12 @@ public class Check {
             return false;
         }
         finally {
-            conUtil.myclose(conn);
+            ConUtil.myclose(conn);
         }
         return true;
     }
     public static  boolean uname(String uname){
-        Connection conn = conUtil.openConection();
+        Connection conn = ConUtil.openConection();
         uname=CheckStrUtil.getStringNoBlank(uname);
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("select * from user where uname=?");
@@ -69,6 +70,9 @@ public class Check {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        finally {
+            ConUtil.myclose(conn);
         }
 
             return false;
